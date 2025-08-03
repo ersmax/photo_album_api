@@ -1,0 +1,620 @@
+:root {
+    --main-color: rgb(145, 108, 28);
+    --light-main-color: rgb(180, 148, 58);
+}
+/*General properties-------------------------------------------------------------------------------------*/
+ul, ol, dl {
+    text-align: justify;
+    margin-right: 20px;
+}
+/*properties according to screen size--------------------------------------------------------------------*/
+body {
+    font: normal normal normal 10px Arial, Verdana, sans-serif;
+    background-color: rgb(240, 240, 240);
+    display: grid;
+        grid-template-columns: auto;
+        grid-template-rows:  10em 3em auto minmax(87.5px, auto) auto auto 11em 8em 18em;
+        grid-template-areas: "title"
+                            "nav"
+                            "introduction"
+                            "bar"
+                            "authorsNav"
+                            "gallerySec "
+                            "contacts"
+                            "address"
+                            "map";
+    margin: 0px;
+}
+@media screen and (min-width: 670px) {
+    body {
+        font: normal normal normal 13px Arial, Verdana, sans-serif;
+        display: grid;
+        grid-template-columns: 50vw auto;
+        grid-template-rows:  10em 3em auto minmax(87.5px, auto) auto auto minmax(200px,20vh) minmax(200px,20vh);
+        grid-template-areas: "title title"
+                            "nav nav"
+                            "introduction introduction"
+                            "bar bar"
+                            "authorsNav authorsNav"
+                            "gallerySec gallerySec"
+                            "contacts contacts"
+                            "map address";
+    }
+}
+@media screen and (min-width: 1120px) {
+    body {
+        font: normal normal normal 16px Arial, Verdana, sans-serif;
+        display: grid;
+        grid-template-columns: 30vw auto 40vw;
+        grid-template-rows:  10em 3em auto minmax(87.5px, auto) auto auto minmax(200px,20vh);
+        grid-template-areas: "title title title"
+                            "nav nav nav"
+                            "introduction introduction introduction"
+                            "bar bar bar"
+                            "authorsNav authorsNav authorsNav"
+                            "gallerySec gallerySec gallerySec"
+                            "contacts address map";
+    }
+}
+@media only screen and (max-width: 600px) and (orientation: landscape) {
+    table {
+        border: 0;
+    }
+    table th {
+        display: none;
+    }
+    table tr {
+        margin-bottom: 10px;
+        display: block;
+        border-bottom: 2px solid #ddd;
+    }
+    table td {
+        display: block;
+        text-align: left;
+        font-size: 13px;
+        border-bottom: 1px dotted #ccc;
+    }
+    table td:last-child {
+        border-bottom: 0;
+    }
+    table td:before {
+        content: attr(data-label);
+        float: left;
+        text-transform: uppercase;
+        font-weight: bold;
+        margin-right: 20px;
+    }
+    #submitDiv {
+        text-align: center !important;
+    }
+    table td {
+        border-radius: 0px !important;
+    }
+    #footerSec3 p {
+        display: none;
+    }
+}
+@media only screen and (max-width: 600px) {
+    table {
+        border: 0;
+    }
+
+    table th {
+        display: none;
+    }
+    table tr {
+        margin-bottom: 10px;
+        display: block;
+        border-bottom: 2px solid #ddd;
+    }
+    table td {
+        display: block;
+        text-align: left;
+        font-size: 13px;
+        border-bottom: 1px dotted #ccc;
+    }
+    table td:last-child {
+        border-bottom: 0;
+    }
+    table td:before {
+        content: attr(data-label);
+        float: left;
+        text-transform: uppercase;
+        font-weight: bold;
+        margin-right: 20px;
+    }
+    #submitDiv {
+        text-align: center !important;
+    }
+
+    table td {
+        border-radius: 0px !important;
+    }
+    #footerSec3 p {
+        display: none;
+    } 
+}
+/*properties for printing------------------------------------------------------------------------*/
+@media print {
+    body {
+        font: normal normal normal 11px "Times New Roman", Times, sans-serif;
+        display: grid;
+        grid-template-columns: 30vw auto 40vw;
+        grid-template-rows:  10em 3em auto 5em auto auto minmax(200px,20vh);
+        grid-template-areas: "title title title"
+                            "nav nav nav"
+                            "introduction introduction introduction"
+                            "tableTitleSection tableTitleSection tableTitleSection"
+                            "table table table"
+                            "submit submit submit"
+                            "contacts address map";
+        margin: 15px;
+    }
+    nav {
+        display: none;
+    }    
+    #contributionRow {
+        display: none
+    }
+    #submitDiv {
+        display: none;
+    }
+    #descriptionHeader {
+        min-width: 0 !important;
+    }
+    .authorImg {
+        width: 9em !important;
+    }
+    #table-title {
+        display: none;
+    }
+    .footer {
+        color: black !important;
+    }
+    #footerSec3 {
+        display: none;
+    }
+    a {
+        text-decoration: none !important;
+        color: black !important;
+
+    }
+    table a:visited {
+        color: black !important;
+    }
+    #row1 {
+        page-break-after: always;
+    }
+    #row2 {
+        page-break-before: always;
+    }
+}
+/*Title------------------------------------------------------------------------------*/
+#header {
+    grid-area: title;
+    text-align: center;
+    overflow: hidden;
+    background: transparent url("https://media.istockphoto.com/id/912922976/vector/bookshelf.jpg?s=612x612&w=0&k=20&c=-NPiKGyuRUgqT5si_RPnzMxgDFy39xiaokZj09rndjA=") repeat-x 50% 13%;
+}
+h1 {
+    
+    font-style: italic;
+    font-variant: small-caps;
+    color: var(--main-color);
+    font-size: 3em;
+    text-shadow: 2px 2px 0px black;
+    margin: 4vw 0px 10px 0px;
+    
+}
+/*Navigation-------------------------------------------------------------------------*/
+nav {
+    font-size: 1.2em;
+    text-align: center;
+    grid-area: nav;
+    padding: 0px;
+    margin-bottom: 2.7vh;
+    background-color: rgb(30,30,30);
+    box-shadow: 0px 4px 7px black, 0px -4px 7px;
+}
+nav a{
+    font-weight: bold;
+    text-decoration: none;
+    text-transform: lowercase;
+    color: var(--light-main-color);
+    transition: font-size 0.5s;
+}
+nav a:hover{
+    font-size: 1.2em;
+}
+#colorButton {
+    float: right;
+    height: 80%;
+    border-width: 3px;
+    border-color: var(--light-main-color);
+    cursor: pointer;
+    margin-top: 5px;
+    margin-left: 5px;
+    transition: all 0.05s;
+    font-size: 0.7em;
+    box-shadow: 0px 0px 10px 3px;
+}
+#colorButton:hover {
+    background-color: var(--light-main-color);
+    padding: 3px 7px 3px 7px;
+    border: 1px solid yellow;
+    transform: scale(1.10,1.10);
+    color: white;
+    position: relative;
+}
+#colorButton input {
+    height: 100%;
+    float: right;
+    margin-left: 20px;
+}
+/*Introduction-----------------------------------------------------------------------*/
+#introduction {
+    grid-area: introduction;
+    text-indent: 2em;
+    text-align: justify;
+    margin: 0px 20px 1.5em 20px;
+    widows: 5;
+    orphans: 5;
+}
+/*Table------------------------------------------------------------------------------*/
+
+
+#authorsNav {
+    grid-area: authorsNav;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    font-size: 1.3em;
+    border: 2px solid black;
+    background-color: rgb(180, 148, 58);
+    margin: 10px;
+}
+.authorDiv {
+    flex: 0 1 30%;
+    white-space: nowrap;
+    text-align: center;
+    transition: all 0.2s;
+    margin: 0.2em 10px 0.1em 10px;
+    cursor: pointer;
+}
+.authorDiv:hover {
+    font-size: 1.2em;
+    margin: 0 10px 0 10px;
+    color: white;
+}
+
+#bar {
+    grid-area: bar;
+    display: flex;
+    flex-wrap: wrap;
+    transition: all 1s;
+    min-height: 87.5px;
+}
+.sticky {
+    position: fixed;
+    background-color: rgb(240, 240, 240);
+    width: 100%;
+    min-width: 260px;
+    box-shadow: 0px 10px 10px 5px;
+    top: 0px;
+}
+#buttonDiv {
+    flex: 0 1 60%; 
+    height: 40px;
+    min-width: 300px;
+    
+}
+#buttonDiv button{
+    height: 80%;
+    float: left;
+    border-width: 3px;
+    border-color: var(--light-main-color);
+    cursor: pointer;
+    margin-top: 5px;
+    margin-left: 5px;
+    transition: all 0.05s;
+    font-size: 1em;
+    box-shadow: 0px 0px 10px 3px;
+}
+#buttonDiv button:hover {
+    background-color: var(--light-main-color);
+    padding: 3px 7px 3px 7px;
+    border: 1px solid yellow;
+    transform: scale(1.10,1.10);
+    color: white;
+    position: relative;
+}
+
+#searchBarDiv {
+    flex: 0 1 40%;
+    height: 40px;
+}
+#searchBarDiv input, #searchBarDiv span {
+    height: 60%;
+    float: right;
+    margin-top: 5px;
+    margin-right: 5px;
+}
+#searchKeysDiv {
+    flex: 0 1 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 4px;
+    border-left: 0px;
+    border-right: 0px;
+    border: 2px solid gray;
+    min-height: 2.35em;
+}
+.keyDiv {    /*   26      */
+    font-size: 1.3em;
+    border: 2px solid var(--main-color);
+    border-radius: 5px;
+    padding: 0px 2px 0px 2px;
+    margin: 0.2em 0 0.2em 0;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+.keyDiv:hover {
+    margin: 0.05em 0 0.05em 0;
+    font-size: 1.5em;
+}
+
+#gallerySec {
+    grid-area: gallerySec;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: space-around;
+    margin: 5px auto 100px auto;
+}
+.imgDiv {
+    flex: 0 1 300px;
+    height: 360px;
+    text-align: center;
+    overflow: hidden;
+    box-shadow: 10px 10px 20px 10px;
+    background-color: rgb(240,240,240);
+    transition: all 1s;
+    cursor: pointer;
+}
+.imgDiv:hover {
+    box-shadow: 0px 0px 20px 30px;
+}
+.divExpand {
+    height: 530px;
+}
+.imgDiv figure {
+    margin-left: 10px;
+    margin-right: 10px;
+    height: 300px;
+}
+.imgDiv img {
+    max-width: 95%;
+    max-height: 300px;    
+}
+.description {
+    margin: 20px 10px auto 10px;
+    opacity: 0;
+    transition: all 1s;
+    height: 120px;
+    overflow: scroll;
+
+}
+.edit {
+    margin-left: 10px;
+    cursor: pointer;
+    font-size: 1.5em;
+}
+.edit:hover {
+    transition: 0.2s;
+    font-size: 1.8em;
+}
+.trash {
+    font-size: 1.5em;
+    margin-right: 15px;
+    margin-left: 15px;
+    color: red;
+
+}
+.trash:hover {
+    transition: 0.2s;
+    font-size: 1.8em;
+}
+.desDisplay {
+    opacity: 1;
+}
+
+
+
+.modal {
+    overflow: auto;
+    display: none;
+    position: fixed;
+    z-index: 5;
+    background-color: rgb(0,0,0,0.6);
+    height: 100%;
+    width: 100%;
+}
+
+.modalContent {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    background-color: white;
+    border: 2px solid black;
+    box-shadow: 10px 10px 30px, -10px -10px 30px;
+    margin: auto;
+    margin-top: 50px;
+    width: 80%;
+
+}
+#modalButton {
+    float: right;
+}
+#closeButtonBox {
+    flex: 0 1 100%;
+}
+#closeButton {
+    margin-right: 5px;
+    float: right;
+    font-weight: bold;
+    font-size: 2.5em;
+    color: darkgray;
+    margin-bottom: 0.25em;
+}
+#closeButton:hover {
+    cursor: pointer;
+    transform: scale(1.2,1.2);
+    margin-bottom: 0.25em;
+}
+#addImgIcon {
+    width: 30%;
+}
+textarea {
+    flex: 0 1 60%;
+    height: 100px;
+    min-width: 140px;
+    border: hidden;
+}
+#image {
+    flex: 0 1 60%;
+    min-width: 6em;
+    height: 100px;
+    border: hidden;
+}
+.label {
+    flex: 0 1 30%;
+    min-width: 6em;
+    text-align: left;
+}
+.formBox {
+    display: flex;
+    justify-content: start;
+    flex-wrap: wrap;
+    gap: 1em;
+    flex: 0 1 40%;
+    min-width: 150px;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    
+}
+
+#submitButton {
+    flex: 0 1 50%;
+    border-width: 3px;
+    border-color: var(--light-main-color);
+    border-radius: 15px;
+    cursor: pointer;
+    margin: auto;
+    float: right;
+}
+#submitButtonImg {
+    width: 60px;
+    height: 40px;
+    transition: 0.2s;
+}
+#submitButton:hover {
+    background-color: var(--light-main-color);
+    padding: 3px 7px 3px 7px;
+    border: 1px solid yellow;
+    transform: scale(1.10,1.10);
+    color: white;
+    position: relative;
+}
+#submitButton:hover img {
+    filter: invert(1);
+}
+#formReset {
+    height: 20px;
+    margin: auto;
+}
+
+
+
+
+
+/*Form*/
+/*Submit button-------------------------------------------------------------------*/
+
+
+/*Footer-----------------------------------------------------------------------*/
+.footer {
+    background-color: var(--light-main-color);
+    color: white;
+    border-top: 5px double white;
+}
+.footer>dl {
+    margin: 2em 20px 1em 20px;
+}
+
+#footerSec1 {
+    grid-area: contacts;
+    border-right-style: none;
+}
+#footerSec2 {
+    grid-area: address;
+    border-left-style: none;
+    border-right-style: none;
+}
+#footerSec2 dd {
+    text-indent: 10%;
+    text-align: left;
+}
+#footerSec3 {
+    grid-area: map;
+    border-left-style: none;
+}
+#footerSec3 div {
+    font-family: cursive;
+    text-align: right;
+    margin-right: 20px;
+    min-width: 100px;
+    height: 20vh;
+}
+.footer iframe {
+    width: 250px; 
+    height: 150px;
+    border: 0px;
+    margin-top: 10px;
+    margin-left: 10px;
+    float: left;
+    vertical-align: sub;
+}
+/*Pseudo classes/ elements---------------------------------------------*/
+::selection { 
+    background: rgb(180, 148, 58);
+    color:white;
+}
+nav a:active {
+    background-color: rgb(180, 148, 58);
+    color:white;
+}
+::placeholder {
+    color: rgb(196, 180, 84);
+    opacity: 0.6;
+}
+figure a:link {
+    color: black;
+}
+figure a:hover {
+    text-decoration: none;
+    color: var(--main-color);
+}
+figure a:visited:hover {
+    text-decoration: none;
+    color: var(--main-color);
+}
+input:focus {
+    background-color: rgb(196, 180, 84);
+}
+textarea:focus {
+    background-color: rgb(196, 180, 84);
+}
+.footer a:link {
+    color: white;
+}

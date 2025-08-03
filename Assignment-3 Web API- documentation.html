@@ -1,0 +1,211 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device">
+    <title>Assignment-3 Web Api</title>
+</head>
+
+
+
+
+<h1>Assignment-3 Web Api</h1>
+
+<p>V1.0.0
+You can use Assignment-3 Web API to broaden your knowledge about famous personalities in the world over.<br><br> 
+
+Take a look at our Web API endpoints below to discover more.<br><br>
+
+Data on the database are stored in a table with the following data:<br>
+|id |author |alt |tags |image(url) |description |<br>
+
+Please note that the base URL for all Web API requests is the following:<br>
+http://localhost:3000/api .<br>
+</p>
+
+
+
+<p>
+    -----<br>
+    &emsp;Our API supports CRUD functionalities (Create, Retrieve, Update and Delete)<br><br>
+
+    &emsp;single image URI endpoint: <br>
+    &emsp;http://localhost:3000/api/:imageid    <br><br>
+
+    &emsp;Please note that in the examples below, the response example is diplayed in the "Pretty" version. 
+    </p>
+    <br><br>
+    
+<br>
+
+<nav>
+    <ul>
+        <li><a href="#GET1">GET image</a></li>
+        <li><a href="#GET2">GET images</a></li>
+        <li><a href="#POST">POST image</a></li>
+        <li><a href="#PUT">PUT image</a></li>
+        <li><a href="#DELETE" >DELETE image</a></li>
+        <li><a href="#RESET">Reset database</a></li>
+    </ul>
+</nav>
+
+<h1>ENDPOINTS:</h1><br>
+
+<section>
+    <p>
+        <h2 id="GET1">-----(1.1) GET single Image-----</h2><br>
+        
+        &emsp;The GET method with id data in the request body retrieves the image datas corrisponding to the id<br><br> 
+
+        &emsp;Request body = none<br><br>
+
+        &emsp;URL: http://localhost:3000/api/:imageId<br><br>
+
+        &emsp;possible response status: 200, 400, 404, 500<br><br>
+
+        &emsp;response MIME format: application/JSON<br><br>
+            
+        &emsp;Response example (response status 200):<br>
+            &emsp;[<br>
+            &emsp;{<br>
+                &emsp;&emsp;"id": 4,<br>
+                &emsp;&emsp;"author": "Tolkien",<br>
+                &emsp;&emsp;"alt": "Image of Tolkien",<br>
+                &emsp;&emsp;"tags": "English writer professor",<br>
+                &emsp;&emsp;"image": "https://upload.wikimedia.org/wikipedia/commons/d/d4/J._R._R._Tolkien%2C_ca._1925.jpg",<br>
+                &emsp;&emsp;"description": "English writer, appointed by Queen Elizabeth for academic writing skills"<br>
+                &emsp;}<br>
+                &emsp;]<br>
+        -----------------------------<br><br>
+    </p>
+    <p>
+        <h2 id="GET2">-----(1.2) GET all Images-----</h2><br><br> 
+
+        &emsp;The GET method with no id in the request body retrieves all images datas<br><br>
+
+
+        &emsp;Request body = none<br><br>
+        &emsp;URL: http://localhost:3000/api<br><br>
+        
+
+        &emsp;possible response status: 200, 400, 500<br>
+        &emsp;response MIME format: application/JSON<br><br>
+        &emsp;Response example (response status 200):<br>
+            [<br>
+            {<br>
+                &emsp;&emsp;"id": 4,<br>
+                &emsp;&emsp;"author": "Tolkien",<br>
+                &emsp;&emsp;"alt": "Image of Tolkien",<br>
+                &emsp;&emsp;"tags": "English writer professor",<br>
+                &emsp;&emsp;"image": "https://upload.wikimedia.org/wikipedia/commons/d/d4/J._R._R._Tolkien%2C_ca._1925.jpg",<br>
+                &emsp;&emsp;"description": "English writer, appointed by Queen Elizabeth for academic writing skills"<br>
+                &emsp;},<br>    
+                &emsp;{<br>
+                    &emsp;&emsp;"id": 5,<br>
+                    &emsp;&emsp;"author": "Asimov",<br>
+                    &emsp;&emsp;"alt": "Image of Asimov",<br>
+                    &emsp;&emsp;"tags": "American writer professor",<br>
+                    &emsp;&emsp;"image": "https://www.incimages.com/uploaded_files/image/1920x1080/getty_141551405_2000148720009280238_129014.jpg",<br>
+                    &emsp;&emsp;"description": "American writer, genious of chemistry"<br>
+                    &emsp;}<br>
+                    &emsp;]<br>
+        -----------------------------<br><br>
+    </p>
+    <p>
+
+        <h2 id="POST">-----(2) POST Image-----</h2> <br><br>
+
+        &emsp;The POST method with "author", "alt", "tags", "description", "image" datas in the request body inserts the new image and the corresponding datas in the database with a unique id<br><br>
+
+        &emsp;Request MIME format = application/JSON <br><br>
+        &emsp;URL: http://localhost:3000/api<br><br>
+        &emsp;Request sample<br>
+        &emsp;{<br>
+            &emsp;&emsp;"author": "Tolkien",<br>
+            &emsp;&emsp;"alt": "Image of Tolkien",<br>
+            &emsp;&emsp;"tags": "English writer professor",<br>
+            &emsp;&emsp;"image": "https://upload.wikimedia.org/wikipedia/commons/d/d4/J._R._R._Tolkien%2C_ca._1925.jpg",<br>
+            &emsp;&emsp;"description": "English writer, appointed by Queen Elizabeth for academic writing skills"<br>
+            &emsp;}<br><br>
+            
+            &emsp;possible response status: 201, 400, 500<br>
+            &emsp;response MIME format: application/JSON (for errors)<br>
+
+            &emsp;Response example (response status 500):<br>
+            &emsp;{<br>
+                &emsp;&emsp;"Error": "code 500, server error occurred."<br>
+            &emsp;}<br><br>
+        -----------------------------<br><br>
+    </p>
+    <p>
+        <h2 id="PUT">-----(3) PUT Image-----</h2> <br><br>
+
+        &emsp;The PUT method with "author", "alt", "tags", "description", "image","id" datas in the request body updates  the image corrisponding to the "id" with the new datas in the request body<br><br>
+
+        &emsp;Request MIME format = application/JSON <br><br>
+        &emsp;URL: http://localhost:3000/api/:imageId<br><br>
+        &emsp;Request sample<br>
+        &emsp;{<br>
+                &emsp;&emsp;"author": "Tolkien",<br>
+                &emsp;&emsp;"alt": "Image of Tolkien",<br>
+                &emsp;&emsp;"tags": "English writer professor",<br>
+                &emsp;&emsp;"image": "https://upload.wikimedia.org/wikipedia/commons/d/d4/J._R._R._Tolkien%2C_ca._1925.jpg",<br>
+                &emsp;&emsp;"description": "English writer, appointed by Queen Elizabeth for academic writing skills"<br>
+                &emsp;}<br><br>
+            
+                &emsp;possible response status: 204, 400, 404, 500<br>
+                &emsp;response MIME format: application/JSON (for errors)<br><br>
+
+                &emsp;Response example (response status 500):<br>
+                &emsp;{<br>
+                    &emsp;&emsp;"Error": "code 500, server error occurred."<br>
+                &emsp;}<br><br>
+        -----------------------------<br><br>
+    </p>
+    <p>
+
+        <h2 id="DELETE">-----(4) DELETE Image-----</h2> <br><br>
+
+        &emsp;The DELETE method with "id" data in the request body deletes the image corrisponding to the "id" from the database<br><br>
+
+        &emsp;Request body = none<br><br>
+
+        &emsp;URL: http://localhost:3000/api/:imageId<br><br>
+            
+        &emsp;possible response status: 204, 400, 404, 500<br>
+        &emsp;response MIME format: application.JSON (for errors);<br><br>
+
+        &emsp;Response example (response status 500):<br>
+        &emsp;{<br>
+            &emsp;&emsp;"Error": "code 500, server error occurred."<br>
+        &emsp;}<br><br>
+
+        -----------------------------<br>
+    </p>
+    <p>
+
+        <h2 id="RESET">-----(4) Reset database-----</h2> <br><br>
+
+        &emsp;<br>resets the database deleting all images<br><br>
+
+        &emsp;Request body = none<br><br>
+        &emsp;URL: http://localhost:3000/api/reset<br><br>
+        
+            
+        &emsp;possible response status: 204, 500<br>
+        &emsp;response MIME format: application/JSON (for errors)<br><br>
+
+        &emsp;Response example (response status 500):<br>
+        &emsp;{<br>
+            &emsp;&emsp;"Error": "code 500, server error occurred."<br>
+        &emsp;}<br><br>
+        -----------------------------<br>
+    </p>
+
+</section>
+
+
+</html>
